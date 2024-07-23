@@ -37,7 +37,7 @@ add_executable(hello main.cpp)
 target_link_libraries(hello PRIVATE meta::meta)
 
 ```
-- 3. main.cpp
+- 3. testing code
 ```c++
 #include <iostream>
 #include <dsa/Vector.h>
