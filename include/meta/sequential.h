@@ -1,5 +1,5 @@
 #pragma once
-#include "helpers.hpp"
+#include "helpers.h"
 
 namespace MetaNN::Sequential
 {
@@ -316,7 +316,7 @@ struct Size_<Cont<T...>>
 };
 
 template <typename TArray>
-constexpr static size_t Size = Size_<RemConstRef<TArray>>::value;
+constexpr static size_t Size = Size_<<TArray>>::value;
 
 template <typename TSeqCont>
 struct Head_;

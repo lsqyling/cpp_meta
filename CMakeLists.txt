@@ -27,6 +27,16 @@ target_include_directories(meta
         $<INSTALL_INTERFACE:include>
 )
 
+add_library(catch3
+        STATIC
+        third_party/catch_amalgamated.cpp
+)
+target_include_directories(catch3
+        PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/third_party>
+)
+
+
 
 add_subdirectory(test)
 
