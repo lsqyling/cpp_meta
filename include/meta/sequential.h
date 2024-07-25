@@ -316,7 +316,7 @@ struct Size_<Cont<T...>>
 };
 
 template <typename TArray>
-constexpr static size_t Size = Size_<<TArray>>::value;
+constexpr  size_t Size = Size_<TArray>::value;
 
 template <typename TSeqCont>
 struct Head_;

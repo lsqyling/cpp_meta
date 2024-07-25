@@ -1,11 +1,11 @@
 #pragma once
-
+#include <exception>
 #include <memory>
 #include <type_traits>
 #include <vector>
-#include "null_param.hpp"
-#include "traits.hpp"
-#include "sequential.hpp"
+#include "null_param.h"
+#include "traits.h"
+#include "sequential.h"
 
 namespace MetaNN
 {
@@ -93,8 +93,6 @@ struct VarTypeDict
             using AimType = Sequential::At<Values, TagPos>;
 
             void* tmp = m_tuple[TagPos].get();
-            if (!tmp)
-                throw std::runtime_error("Empty Value.");
             AimType* res = static_cast<AimType*>(tmp);
             return *res;
         }
@@ -106,9 +104,6 @@ struct VarTypeDict
             using AimType = Sequential::At<Values, TagPos>;
 
             void* tmp = m_tuple[TagPos].get();
-            if (!tmp)
-                throw std::runtime_error("Empty Value.");
-
             AimType* res = static_cast<AimType*>(tmp);
             return *res;
         }

@@ -1,6 +1,8 @@
 #pragma once
-#include "helpers.hpp"
-#include "sequential.hpp"
+#include <tuple>
+#include "helpers.h"
+#include "sequential.h"
+#include "traits.h"
 
 namespace MetaNN::Set
 {

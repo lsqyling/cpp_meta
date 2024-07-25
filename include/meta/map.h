@@ -1,7 +1,7 @@
 #pragma once
 #include <tuple>
-#include "helpers.hpp"
-#include "sequential.hpp"
+#include "helpers.h"
+#include "sequential.h"
 
 namespace MetaNN::Map
 {
