@@ -1,16 +1,10 @@
 //
 // Created by 10580.
 //
-
-#include "meta/var_type_dict.hpp"
+#include "meta/shortest_path.hpp"
 #include "catch_amalgamated.hpp"
 
-
-
-
-
-
-TEST_CASE("var_type_dict")
+TEST_CASE("shortest path testing")
 {
     SECTION("")
     {
@@ -24,7 +18,12 @@ TEST_CASE("var_type_dict")
 
 
 
+
 }
+
+
+
+
 
 
 
