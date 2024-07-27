@@ -39,7 +39,7 @@ using cmp = std::bool_constant<sizeof(L) < sizeof(R)>;
 
 }
 
-TEST_CASE("type_list alg")
+TEST_CASE("type_list-alg")
 {
     using namespace meta;
     SECTION("concat")
@@ -111,7 +111,7 @@ TEST_CASE("type_list alg")
 
 
 
-TEST_CASE("type_list testing")
+TEST_CASE("type_list-testing")
 {
     SECTION("type_list")
     {
@@ -158,7 +158,7 @@ TEST_CASE("type_list testing")
 }
 
 
-TEST_CASE("fold_expr testing")
+TEST_CASE("fold_expr-testing")
 {
     SECTION("fold_expr")
     {

@@ -185,7 +185,7 @@ constexpr bool has_value_v = has_value<T>::value;
 }
 
 
-TEST_CASE("simple meta func")
+TEST_CASE("simple-meta-func")
 {
     SECTION("meta121")
     {

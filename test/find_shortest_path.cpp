@@ -26,7 +26,7 @@ using g = meta::graph<
         link(node(A)->node(E))>;
 
 
-TEST_CASE("shortest path testing")
+TEST_CASE("shortest-path-testing")
 {
     SECTION("find_path")
     {
@@ -36,7 +36,7 @@ TEST_CASE("shortest path testing")
         STATIC_REQUIRE(g::get_path('B', 'E').sz == 3);
     }
 
-    SECTION("find_path runtime")
+    SECTION("runtime")
     {
         char from = 'A';
         char to = 'D';
