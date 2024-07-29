@@ -2,8 +2,8 @@
 // Created by 10580.
 //
 
-#ifndef CPP_META_KVTABLE_HPP
-#define CPP_META_KVTABLE_HPP
+#ifndef CPP_META_TEMPLATE_KVTABLE_HPP
+#define CPP_META_TEMPLATE_KVTABLE_HPP
 
 #include <bitset>
 #include <iostream>
@@ -283,4 +283,4 @@ public:
 
 
 
-#endif //CPP_META_KVTABLE_HPP
+#endif

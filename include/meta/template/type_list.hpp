@@ -2,8 +2,8 @@
 // Created by 10580.
 //
 
-#ifndef CPP_META_TYPE_LIST_HPP
-#define CPP_META_TYPE_LIST_HPP
+#ifndef CPP_META_TEMPLATE_TYPE_LIST_HPP
+#define CPP_META_TEMPLATE_TYPE_LIST_HPP
 
 
 namespace meta {
@@ -170,4 +170,4 @@ using flatten_t = typename flatten<In>::type;
 
 
 
-#endif //CPP_META_TYPE_LIST_HPP
+#endif

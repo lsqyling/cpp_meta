@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "meta/shortest_path.hpp"
+#include "meta/template/shortest_path.hpp"
 #include "catch_amalgamated.hpp"
 
 

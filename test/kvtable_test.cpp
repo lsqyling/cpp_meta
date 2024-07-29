@@ -2,7 +2,7 @@
 // Created by 10580.
 //
 #include "catch_amalgamated.hpp"
-#include "meta/kvtable.hpp"
+#include "meta/template/kvtable.hpp"
 
 using byte_t = uint8_t;
 using enum_t = int;

@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "catch_amalgamated.hpp"
-#include "meta/type_list.hpp"
+#include "meta/template/type_list.hpp"
 
 
 namespace fold_expr {
