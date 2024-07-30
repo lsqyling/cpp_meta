@@ -1,0 +1,8 @@
+//
+// Created by 10580.
+//
+
+#ifndef CPP_META_INCLUDE_META_ALGORITHM_HPP
+#define CPP_META_INCLUDE_META_ALGORITHM_HPP
+#include "constexpr/alg.hpp"
+#endif //CPP_META_INCLUDE_META_ALGORITHM_HPP
