@@ -5,8 +5,9 @@
 #include <iostream>
 #include <variant>
 #include "catch_amalgamated.hpp"
-#include "meta/constexpr/alg.hpp"
-using namespace meta;
+#include "meta/algorithm.hpp"
+#include "meta/meta_ns.hpp"
+META_NS_BEGIN
 constexpr auto vl = type_list<>;
 
 TEST_CASE("alg-testing")
@@ -152,7 +153,7 @@ TEST_CASE("transform-filter-unique-fold-testing")
 
 
 
-
+META_NS_END
 
 
 
