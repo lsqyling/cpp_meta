@@ -15,7 +15,7 @@
 
 
 
-### Part2. MetaNN
+### Part2. MetaNN[TODO]
 - 项目结构：include/meta_nn | test/meta_nn
 - 项目说明：基于模板元实现的深度学习框架
 
@@ -40,43 +40,30 @@ target_link_libraries(hello PRIVATE meta::meta)
 ```
 - 3. testing code
 ```c++
-#include <iostream>
-#include <dsa/Vector.h>
-#include <dsa/CommonHeaders.h>
-#include <dsa/String.h>
-
-using namespace linear;
-
-int main()
+TEST_CASE("transform-filter-unique-fold-testing")
 {
-    Vector<int> v1;
-    cout << v1 << endl;
+    SECTION("value level")
+    {
+        constexpr auto res = value_list<1, 2, 3, 4, 5, 6, 7, 8, 9, 10>
+                             | transform([](auto x) { return _v<x * x>; })
+                             | filter([](auto x) { return _v<x < 30>; })
+                             | fold_left(_v<0>, [](auto acc, auto n) { return _v<acc + n>; });
+        STATIC_REQUIRE(res == 55);
+    }
 
-    Vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    cout << "vi: " << vi << endl;
 
-    Vector<int> v2(vi);
-    cout << "v2: " << v2 << endl;
+    SECTION("type level: add_pointer_t")
+    {
+        constexpr auto result = type_list<int, char, long, char, short, float, double>
+                                | filter([]<typename T>(type_const<T>) { return _v<sizeof(T) < 4>; })
+                                | transform([]<typename T>(type_const<T>) { return _t<std::add_pointer_t<T>>; })
+                                | unique()
+                                | convert_to<std::variant>();
+        STATIC_REQUIRE(result == _t<std::variant<char *, short *>>);
+    }
+    std::cout << "alg passed!" << std::endl;
 
-    Vector<int> v3(std::move(vi));
-    cout << "v3: " << v3 << endl;
-
-    Vector<int> v4(10, 1);
-    cout << "v4: " << v4 << endl;
-
-    auto beg = v3.begin(), end = v3.end();
-    Vector<int> v5(beg, end);
-    cout << "v5: " << v5 << endl;
-
-    int i = 2;
-    Vector<int> v6(10, i);
-    cout << "v6: " << v6 << endl;
-    cout << "v6 is empty? " << v6.empty() << endl;
-
-    cout << (v6 == v5) << endl;
-
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
 }
+
 
 ```
