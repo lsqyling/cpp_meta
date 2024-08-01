@@ -91,6 +91,13 @@ TEST_CASE("type_list-constexpr-testing")
         STATIC_REQUIRE(std::same_as<dispatch_value<type_list_<char,int>{}>, type_list_<char,int>>);
     }
 
+    SECTION("make_index_sequence")
+    {
+        constexpr auto seq = std::make_index_sequence<10>{};
+        STATIC_REQUIRE(seq.size() == 10);
+
+    }
+
 
 
 

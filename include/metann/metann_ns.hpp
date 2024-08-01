@@ -1,0 +1,12 @@
+//
+// Created by 10580.
+//
+
+#ifndef CPP_META_INCLUDE_METANN_METANN_NS_HPP
+#define CPP_META_INCLUDE_METANN_METANN_NS_HPP
+
+#define METANN_NS metann
+#define METANN_NS_BEGIN namespace METANN_NS {
+#define METANN_NS_END }
+
+#endif //CPP_META_INCLUDE_METANN_METANN_NS_HPP
