@@ -27,28 +27,9 @@ void test_policy_container()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main(int argc, char *argv[])
 {
-
+    test_policy_container();
 
 
 

@@ -11,7 +11,7 @@ METANN_NS_BEGIN
 #define ENUM_TYPE_POLICY_OBJ(PolicyName, Ma, Mi, Val)   \
 struct PolicyName : virtual public Ma                   \
 {                                                       \
-    using minor_calss = Ma::Mi##_typecate;              \
+    using minor_class = Ma::Mi##_typecate;              \
     using Mi = Ma::Mi##_typecate::Val;                  \
 }                                                       \
 
@@ -20,7 +20,7 @@ struct PolicyName : virtual public Ma                   \
 #define VALUE_POLICY_OBJ(PolicyName, Ma, Mi, Val)           \
 struct PolicyName : virtual public Ma                       \
 {                                                           \
-    using minor_calss = Ma::Mi##_valuecate;                 \
+    using minor_class = Ma::Mi##_valuecate;                 \
 private:                                                    \
     using type1 = decltype(Ma::Mi);                         \
     using type2 = remove_const_ref_t<type1>;                \
@@ -33,7 +33,7 @@ public:                                                     \
 template<typename T>                                        \
 struct PolicyName : virtual public Ma                       \
 {                                                           \
-    using minor_calss = Ma::Mi##_typecate;                  \
+    using minor_class = Ma::Mi##_typecate;                  \
     using Mi = T;                                           \
 }                                                           \
 
@@ -42,12 +42,12 @@ struct PolicyName : virtual public Ma                       \
 template<remove_const_ref_t<decltype(Ma::Mi)> T>                \
 struct PolicyName : virtual public Ma                           \
 {                                                               \
-    using minor_calss = Ma::Mi##_valuecate;                     \
+    using minor_class = Ma::Mi##_valuecate;                     \
 private:                                                        \
     using type1 = decltype(Ma::Mi);                             \
     using type2 = remove_const_ref_t<type1>;                    \
 public:                                                         \
-    static constexpr type2 Mi = T;                               \
+    static constexpr type2 Mi = T;                              \
 }                                                               \
 
 METANN_NS_END

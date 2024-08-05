@@ -14,6 +14,8 @@ METANN_NS_BEGIN
 
 struct acc_policy
 {
+    using major_class = acc_policy;
+
     struct accu_typecate
     {
         struct add;
@@ -32,7 +34,7 @@ struct accumulator
     using policont = policy_container<Policies...>;
     using policy_res = policy_select_t<acc_policy, policont>;
 
-    using value_type = typename policy_res::value;
+    using value_type = policy_res::value;
     static constexpr bool is_ave = policy_res::is_ave;
     using accu_type = typename policy_res::accu;
 

@@ -25,15 +25,12 @@ void test_accumulator()
 {
     int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     std::cout << accumulator<>::eval(arr) << std::endl;
-
+    std::cout << accumulator<pmul_accu, pave>::eval(arr) << std::endl;
+    std::cout << accumulator<pmul_accu, pno_ave>::eval(arr) << std::endl;
+    std::cout << accumulator<pave, pmul_accu>::eval(arr) << std::endl;
+    std::cout << accumulator<padd_accu, pave>::eval(arr) << std::endl;
+//    std::cout << accumulator<padd_accu, pmul_accu>::eval(arr) << std::endl;
 }
-
-
-
-
-
-
-
 
 
 
