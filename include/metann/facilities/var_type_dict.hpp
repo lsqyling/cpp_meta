@@ -53,7 +53,7 @@ class var_type_dict
             constexpr auto pos = sequential::order_v<var_type_dict, Tag>;
             using raw_type = sequential::at_t<values, pos>;
             auto tmp = new raw_type(std::forward<Params>(params)...);
-            m_tuple[pos] = std::shared_ptr(tmp, [](void *ptr) {
+            m_tuple[pos] = std::shared_ptr<void>(tmp, [](void *ptr) {
                 raw_type *p = ptr;
                 delete p;
             });
