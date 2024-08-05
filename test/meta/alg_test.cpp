@@ -47,9 +47,9 @@ TEST_CASE("alg-testing")
 
     SECTION("concat")
     {
-        constexpr auto vl = type_list<long, char, int, double, float>;
-        STATIC_REQUIRE(vl == concat(type_list<long, char>, type_list<int, double, float>));
-        STATIC_REQUIRE(vl == concat(type_list<long, char>, type_list<int>, type_list<double, float>));
+        constexpr auto v1 = type_list<long, char, int, double, float>;
+        STATIC_REQUIRE(v1 == concat(type_list<long, char>, type_list<int, double, float>));
+        STATIC_REQUIRE(v1 == concat(type_list<long, char>, type_list<int>, type_list<double, float>));
     }
 }
 
@@ -57,14 +57,16 @@ TEST_CASE("alg-contain-testing")
 {
     SECTION("type level")
     {
-        auto vl = type_list<int, char, float, short>;
-        STATIC_REQUIRE(contain(vl, _t<int>));
-        STATIC_REQUIRE(!contain(vl, _t<long long>));
-    }SECTION("value level")
+        constexpr auto v1 = type_list<int, char, float, short>;
+        STATIC_REQUIRE(contain(v1, _t<int>));
+        STATIC_REQUIRE(!contain(v1, _t<long long>));
+    }
+
+    SECTION("value level")
     {
-        auto vl = value_list<1, 2, 3, 4>;
-        STATIC_REQUIRE(contain(vl, _v<2>));
-        STATIC_REQUIRE(!contain(vl, _v<0>));
+        constexpr auto v1 = value_list<1, 2, 3, 4>;
+        STATIC_REQUIRE(contain(v1, _v<2>));
+        STATIC_REQUIRE(!contain(v1, _v<0>));
         std::cout << "contain passed!" << std::endl;
     }
 }
@@ -99,14 +101,14 @@ TEST_CASE("convert_from-testing")
 {
     SECTION("value level")
     {
-        constexpr auto vl = convert_from<std::make_index_sequence<10>>();
-        STATIC_REQUIRE(vl == value_list<0, 1, 2, 3, 4, 5, 6, 7, 8, 9>);
+        constexpr auto v1 = convert_from<std::make_index_sequence<10>>();
+        STATIC_REQUIRE(v1 == value_list<0, 1, 2, 3, 4, 5, 6, 7, 8, 9>);
     }
 
     SECTION("type level")
     {
-        constexpr auto vl = convert_from<std::tuple<int, char, double>>();
-        STATIC_REQUIRE(vl == type_list<int, char, double>);
+        constexpr auto v1 = convert_from<std::tuple<int, char, double>>();
+        STATIC_REQUIRE(v1 == type_list<int, char, double>);
     }
 }
 

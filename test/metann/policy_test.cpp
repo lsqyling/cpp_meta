@@ -1,6 +1,7 @@
 //
 // Created by 10580.
 //
+#include <iostream>
 #include "metann/policy/policy_container.hpp"
 #include "metann/policy/policy_op.hpp"
 #include "metann/policy/policy_defines.hpp"
@@ -18,13 +19,8 @@ void test_policy_container()
 
     static_assert(is_subpolicy_container<int> == false);
     static_assert(is_subpolicy_container<subpolicy_container<LayerO, int, double>>);
+    std::cout << __func__ << " passed!" << std::endl;
 }
-
-
-
-
-
-
 
 
 int main(int argc, char *argv[])

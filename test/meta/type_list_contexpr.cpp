@@ -97,19 +97,6 @@ TEST_CASE("type_list-constexpr-testing")
         STATIC_REQUIRE(seq.size() == 10);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

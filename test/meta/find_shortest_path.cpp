@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "meta/template/shortest_path.hpp"
 #include "catch_amalgamated.hpp"
+#include "meta/template/shortest_path.hpp"
 
 
 template<char Id>

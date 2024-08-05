@@ -29,6 +29,7 @@ void test_accumulator()
     std::cout << accumulator<pmul_accu, pno_ave>::eval(arr) << std::endl;
     std::cout << accumulator<pave, pmul_accu>::eval(arr) << std::endl;
     std::cout << accumulator<padd_accu, pave>::eval(arr) << std::endl;
+    std::cout << accumulator<padd_accu, pvalue_type_is<double>, pave_policy_is<true>>::eval(arr) << std::endl;
 //    std::cout << accumulator<padd_accu, pmul_accu>::eval(arr) << std::endl;
 }
 
