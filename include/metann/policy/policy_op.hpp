@@ -32,7 +32,7 @@ struct minor_check
 {
     static constexpr bool value = true;
 };
-
+//alg O(n*n)
 template<typename CurPolicy, typename ...Ps>
 struct minor_check<policy_container<CurPolicy, Ps...>>
 {
@@ -46,9 +46,11 @@ struct minor_check<policy_container<CurPolicy, Ps...>>
 template<typename MajorClass, typename PolicyCont>
 struct selector
 {
+//    alg O(n)
     using t1 = sequential::fold_t<policy_container<>,
             PolicyCont, major_filter<MajorClass>::template apply>;
 
+//    alg O(n*n)
     static_assert(minor_check<t1>::value, "Minor class set conflict!");
 
     using type = std::conditional_t<sequential::size_v<t1> == 0, MajorClass, policy_selres<t1>>;
