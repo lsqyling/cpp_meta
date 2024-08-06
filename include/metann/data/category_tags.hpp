@@ -69,8 +69,5 @@ constexpr bool is_threed_array = is_tensor_with<T, 3>;
 
 
 
-
-
-
 METANN_NS_END
 #endif //CPP_META_INCLUDE_METANN_DATA_CATEGORY_TAGS_HPP
