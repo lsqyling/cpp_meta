@@ -7,6 +7,29 @@
 #include <vector>
 #include "metann/data/category_tags.hpp"
 #include "metann/data/traits.hpp"
+#include "metann/data/allocator.hpp"
+
+using namespace metann;
+
+struct component
+{
+    std::string s;
+    ~component()
+    {
+        std::cout << "component dtor." << std::endl;
+    }
+};
+
+struct A
+{
+    std::shared_ptr<int> ptr;
+    component m_c;
+    ~A()
+    {
+        std::cout << "A dtor." << std::endl;
+    }
+};
+
 
 struct intref
 {
@@ -66,7 +89,23 @@ void test_vector_ref()
     static_assert(std::is_destructible_v<vector_ref>);
 }
 
+void test_dtor_process()
+{
+    A a;
+}
 
+struct node
+{
+    int x;
+    double y;
+};
+
+void test_alloc()
+{
+    auto ptr = allocator<device_tags::cpu>::allocate<node>(512);
+    ptr->x = 1;
+    ptr->y = 3.14;
+}
 
 
 
@@ -75,6 +114,8 @@ void test_vector_ref()
 
 int main(int argc, char* argv[])
 {
+    test_alloc();
+    test_dtor_process();
     test_intref();
     test_vector_ref();
 
