@@ -28,12 +28,12 @@ public:
     {
         return m_mem.get();
     }
-
+    [[nodiscard]]
     bool is_shared() const
     {
         return m_mem.use_count() > 1;
     }
-
+    [[nodiscard]]
     size_t size() const
     {
         return m_size;

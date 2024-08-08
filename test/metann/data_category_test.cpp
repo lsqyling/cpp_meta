@@ -127,12 +127,41 @@ public:
 };
 
 
+class nocopyable
+{
+public:
+    nocopyable() = default;
+    nocopyable(const nocopyable &) = delete;
+    nocopyable &operator=(const nocopyable &) = delete;
+
+    nocopyable(nocopyable &&) = delete;
+    nocopyable &operator=(nocopyable &&) = default;
+
+
+};
+
+void test_nocopyable()
+{
+    nocopyable a;
+//    nocopyable b = a;
+    nocopyable c = nocopyable{};
+//    nocopyable b(std::move(a));
+
+    nocopyable d;
+//    d = c;
+    d = std::move(c);
+
+    nocopyable e;
+    d = nocopyable{};
+}
+
 
 
 
 
 int main(int argc, char* argv[])
 {
+    test_nocopyable();
     test_alloc();
     test_dtor_process();
     test_intref();
