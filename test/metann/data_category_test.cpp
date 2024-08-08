@@ -1,13 +1,11 @@
 //
 // Created by 10580.
 //
-#include <concepts>
 #include <type_traits>
 #include <iostream>
 #include <vector>
-#include "metann/data/category_tags.hpp"
-#include "metann/data/traits.hpp"
 #include "metann/data/allocator.hpp"
+#include "metann/data/continuous_memory.hpp"
 
 using namespace metann;
 
@@ -106,6 +104,27 @@ void test_alloc()
     ptr->x = 1;
     ptr->y = 3.14;
 }
+
+class base
+{
+    void foo(int i)
+    {
+        std::cout << __func__ << std::endl;
+    }
+public:
+    void foo(std::string_view s)
+    {
+        std::cout << s << std::endl;
+    }
+};
+
+class derived : public base
+{
+public:
+//    using base::foo;
+
+
+};
 
 
 
