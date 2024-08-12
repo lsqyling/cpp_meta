@@ -62,7 +62,7 @@ TEST_CASE("transform-filter-unique-fold-testing")
                                 | convert_to<std::variant>();
         STATIC_REQUIRE(result == _t<std::variant<char *, short *>>);
     }
-    std::cout << "alg passed!" << std::endl;
+    info(alg);
 
 }
 
@@ -70,7 +70,6 @@ TEST_CASE("transform-filter-unique-fold-testing")
 ```
 - 4. var_type_dict 
 ```c++
-#include <iostream>
 #include "metann/facilities/var_type_dict.hpp"
 
 using namespace metann;
@@ -100,7 +99,7 @@ void test_get_set()
                         .set<weight>(0.1f));
 
     std::cout << "r = " << r << std::endl;
-    std::cout << "var_type_dict passed!" << std::endl;
+    info(var_type_dict);
 }
 
 int main(int argc, char *argv[])
