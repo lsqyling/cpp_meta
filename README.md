@@ -4,7 +4,7 @@
 [![Windows](https://img.shields.io/badge/Windows-blue)](https://img.shields.io/badge/Windows-blue)
 [![Language](https://img.shields.io/badge/Language-C%2B%2B20-red)](https://en.cppreference.com/w/cpp/compiler_support/20)
 
-**简介：一个使用C++模板元技术实现的KV数据表，在编译时能对用户的数据KV类型进行重排，内存占用小，
+**简介：一个使用*C++20 metaprogramming*模板元技术实现的KV数据表，在编译时能对用户的数据KV类型进行重排，内存占用小，
 在嵌入式产品中实现高性能数据表。**
 
 ### Part1. KV-table
