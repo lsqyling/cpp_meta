@@ -24,8 +24,9 @@ TEST_CASE("alg-testing")
     {
         constexpr auto res = append(vl, _v<1>, _v<2>);
         STATIC_REQUIRE(res == value_list<1, 2>);
-        std::cout << "append passed!" << std::endl;
-    }SECTION("append type")
+        info(append);
+    }
+    SECTION("append type")
     {
         {
             constexpr auto res = vl | append(_t<int>, _t<double>);
@@ -42,7 +43,7 @@ TEST_CASE("alg-testing")
         auto res = prepend(vl, _v<1>, _v<2>);
         auto res1 = res | prepend(_v<3>, _v<4>);
         STATIC_REQUIRE(res1 == value_list<3, 4, 1, 2>);
-        std::cout << "prepend passed!" << std::endl;
+        info(prepend);
     }
 
     SECTION("concat")
@@ -67,7 +68,7 @@ TEST_CASE("alg-contain-testing")
         constexpr auto v1 = value_list<1, 2, 3, 4>;
         STATIC_REQUIRE(contain(v1, _v<2>));
         STATIC_REQUIRE(!contain(v1, _v<0>));
-        std::cout << "contain passed!" << std::endl;
+        info(contain);
     }
 }
 
@@ -94,6 +95,7 @@ TEST_CASE("alg-convert_to-testing")
                              | convert_to<std::vector>();
         STATIC_REQUIRE(res == _t<std::vector<int, std::allocator<int>>>);
     }
+    info(convert_to);
 }
 
 
@@ -146,7 +148,7 @@ TEST_CASE("transform-filter-unique-fold-testing")
                                 | convert_to<std::variant>();
         STATIC_REQUIRE(result == _t<std::variant<char *, short *>>);
     }
-    std::cout << "alg passed!" << std::endl;
+    info(alg);
 
 }
 

@@ -1,7 +1,6 @@
 //
 // Created by 10580.
 //
-#include <iostream>
 #include "metann/policy/policy_defines.hpp"
 #include "metann/policy/accumulator.hpp"
 
@@ -30,7 +29,7 @@ void test_accumulator()
     std::cout << accumulator<pave, pmul_accu>::eval(arr) << std::endl;
     std::cout << accumulator<padd_accu, pave>::eval(arr) << std::endl;
     std::cout << accumulator<padd_accu, pvalue_type_is<double>, pave_policy_is<true>>::eval(arr) << std::endl;
-//    std::cout << accumulator<padd_accu, pmul_accu>::eval(arr) << std::endl;
+    info(accumulator);
 }
 
 

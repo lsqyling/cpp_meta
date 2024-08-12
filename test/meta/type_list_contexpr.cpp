@@ -4,7 +4,7 @@
 #include <iostream>
 #include "catch_amalgamated.hpp"
 #include "meta/types.hpp"
-
+#include "meta/meta_ns.hpp"
 
 
 struct A
@@ -35,7 +35,7 @@ struct C : private A
 template<typename CC>
 constexpr auto func(CC c)
 {
-    std::cout << "func" << std::endl;
+    info(func);
 }
 
 

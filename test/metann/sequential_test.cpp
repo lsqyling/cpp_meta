@@ -29,7 +29,8 @@ void test_create_at()
     int *pa = &a;
     match_void_ptr(pa);
     void *pv = pa;
-    std::cout << "create at passed!" << std::endl;
+    info(create);
+    info(at);
 
 }
 
@@ -41,7 +42,7 @@ void test_order()
     static_assert(order_v<t1, int> == 1);
     static_assert(order_v<t1, long> == 2);
     static_assert(order_v<t1, double> == 3);
-    std::cout << "order passed!" << std::endl;
+    info(order);
 
 }
 
@@ -73,8 +74,7 @@ void test_set()
     using t4 = type_list<char>;
     using t5 = set_t<t4, 0, int>;
     static_assert(std::same_as<t5, type_list<int>>);
-    std::cout << "set passed!" << std::endl;
-
+    info(set);
 }
 
 template<typename T0, typename T1>
@@ -93,8 +93,7 @@ void test_fold()
 
     constexpr auto r = fold_t<int_<0>, t1, add>::value;
     static_assert(r == 55);
-    std::cout << "fold passed!" << std::endl;
-
+    info(fold);
 }
 
 template<typename T>
@@ -116,7 +115,7 @@ void test_transform()
     using r = sequential::transform_t<t1, trans_f, type_list>;
     static_assert(std::same_as<r, type_list<int_<2>,int_<4>,int_<6>,int_<8>,
             int_<10>,int_<12>,int_<14>,int_<16>,int_<18>,int_<20>>>);
-    std::cout << "transform passed!" << std::endl;
+    info(transform);
 }
 
 void test_cascade()
@@ -126,7 +125,7 @@ void test_cascade()
     using t2 = type_list<long, float, double>;
     using t3 = cascade_t<t1, t2>;
     static_assert(std::same_as<t3, type_list<char, unsigned, int, long, float, double>>);
-    std::cout << "cascade passed!" << std::endl;
+    info(cascade);
 }
 
 void test_push_back()
@@ -135,7 +134,7 @@ void test_push_back()
     using t1 = type_list<char, unsigned , int>;
     using t2 = push_back_t<t1, long, float, double>;
     static_assert(std::same_as<t2, type_list<char, unsigned, int, long, float, double>>);
-    std::cout << "push_back passed!" << std::endl;
+    info(push_back);
 }
 
 void test_size_head_tail()
@@ -146,7 +145,8 @@ void test_size_head_tail()
     static_assert(std::same_as<head_t<t1>, char>);
     static_assert(std::same_as<tail_t<t1>, type_list<unsigned,int,long,float,double>>);
 
-    std::cout << "size head tail passed!" << std::endl;
+    info(head);
+    info(tail);
 }
 
 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include "catch_amalgamated.hpp"
 #include "meta/template/type_list.hpp"
+#include "meta/meta_ns.hpp"
 
 
 namespace fold_expr {
@@ -49,14 +50,14 @@ TEST_CASE("type_list-alg")
         using tl2 = type_list<long, long long>;
         STATIC_REQUIRE(std::is_same_v<concat_t<tl0, tl1, tl2>,
                 type_list<char, int, float, double, long, long long>>);
-        std::cout << "concat passed!" << std::endl;
+        info(concat);
     }
     SECTION("elem")
     {
         using typelist = type_list<char, int, float, double, long, long long, detail::node>;
         STATIC_REQUIRE(elem_v<typelist, detail::node>);
         STATIC_REQUIRE(!elem_v<typelist, char*>);
-        std::cout << "elem passed!" << std::endl;
+        info(elem);
 
     }
     SECTION("unique")
@@ -64,7 +65,7 @@ TEST_CASE("type_list-alg")
         using typelist = type_list<char, int, float, double, char, long, detail::node, long, long long, detail::node>;
         STATIC_REQUIRE(std::is_same_v<unique_t<typelist>,
                 type_list<char,int,float,double,long,detail::node,long long>>);
-        std::cout << "unique passed!" << std::endl;
+        info(unique);
     }
 
     SECTION("partition")
@@ -76,8 +77,7 @@ TEST_CASE("type_list-alg")
                 type_list<char,char,detail::node,detail::node>>);
         STATIC_REQUIRE(std::is_same_v<splitbysize4::rest,
                 type_list<int,float,double,long,long,long long>>);
-
-        std::cout << "partition passed!" << std::endl;
+        info(partition);
     }
     SECTION("sort")
     {
@@ -87,7 +87,7 @@ TEST_CASE("type_list-alg")
         STATIC_REQUIRE(std::is_same_v<sort_t<typelist, detail::cmp>,
                 type_list<char,char,int,float, long, double>>);
 
-        std::cout << "sort passed!" << std::endl;
+        info(sort);
     }
 
     SECTION("flatten")
@@ -98,7 +98,7 @@ TEST_CASE("type_list-alg")
         STATIC_REQUIRE(std::is_same_v<flatten_t<typelist>,
                 type_list<char,int,int,double,double, char, long, unsigned>>);
 
-        std::cout << "flatten passed!" << std::endl;
+        info(flatten);
     }
 }
 
@@ -119,14 +119,14 @@ TEST_CASE("type_list-testing")
 
         STATIC_REQUIRE(std::is_same_v<typelist::to<detail::list>,
                 detail::list<char, int>>);
-        std::cout << "type_list passed!" << std::endl;
+        info(type_list);
     }
     SECTION("map")
     {
         using typelist = meta::type_list<char, float, double, int, char, detail::node>;
         STATIC_REQUIRE(std::is_same_v<meta::map_t<typelist, std::add_pointer>,
                 meta::type_list<char*, float*, double *, int *, char *, detail::node *>>);
-        std::cout << "map passed!" << std::endl;
+        info(map);
     }
 
     SECTION("filter")
@@ -136,7 +136,7 @@ TEST_CASE("type_list-testing")
 
         STATIC_REQUIRE(std::is_same_v<meta::filter_t<typelist, detail::size_less4>,
                 meta::type_list<char, char, detail::node>>);
-        std::cout << "filter passed!" << std::endl;
+        info(filter);
     }
 
     SECTION("fold")
@@ -146,7 +146,7 @@ TEST_CASE("type_list-testing")
 
         STATIC_REQUIRE(meta::fold_t<typelist, detail::Acc, detail::size_type_sum>::value
                                == 35);
-        std::cout << "fold passed!" << std::endl;
+        info(flod);
     }
 }
 
