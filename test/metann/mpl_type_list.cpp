@@ -95,6 +95,111 @@ struct bigger_eq
     static constexpr bool value = sizeof(T) >= 8;
 };
 
+template<typename T>
+struct less_4
+{
+    static constexpr bool value = sizeof(T) < 4;
+};
+
+
+
+void test_alg5()
+{
+    using t0 = type_list<char,int,float,char,double,char,long>;
+    using t1 = split_if_t<t0, less_4>;
+    static_assert(std::same_as<t1, type_list<type_list<int,float>,type_list<double>, type_list<long>>>);
+
+    using t2 = split_t<t0, char>;
+    static_assert(std::same_as<t2, type_list<type_list<int,float>,type_list<double>, type_list<long>>>);
+    info(split_if);
+    info(split);
+
+    static_assert(std::same_as<reverse_sequence_t<std::integer_sequence<unsigned,0,1,2,3,4,5>>,
+            std::integer_sequence<unsigned,5,4,3,2,1,0>>);
+    info(reverse_sequence);
+
+    static_assert(tuple_size_v<t0> == 7);
+    static_assert(std::same_as<tuple_element_t<4,t0>, double>);
+    static_assert(std::same_as<tuple_element_t<0,t0>, char>);
+    static_assert(std::same_as<tuple_element_t<1,t0>, int>);
+    info(tuple_size);
+    info(tuple_element);
+
+    std::cout << "------------------\n";
+}
+
+
+
+void test_alg4()
+{
+    struct node0;
+    struct node1;
+    struct node2;
+    struct node3;
+    struct node4;
+    struct node5;
+    struct node6;
+
+    using t0 = type_list<char,int,long,float,double, node0,node1,node2,node3>;
+    using t1 = type_list<char,float,double,node4,node5,node6>;
+
+    using t4 = union_set_t<t0, t1>;
+    using t5 = intersection_set_t<t0, t1>;
+    using t6 = difference_set_t<t0, t1>;
+    using t7 = symmetric_difference_set_t<t0, t1>;
+
+    static_assert(std::same_as<t4,
+            type_list<char,int,long,float,double,node0,node1,node2,node3,node4,node5,node6>>);
+    static_assert(std::same_as<t5,
+            type_list<char,float,double>>);
+    static_assert(std::same_as<t6,
+            type_list<int,long,node0,node1,node2,node3>>);
+    static_assert(std::same_as<t7,
+            type_list<int,long,node0,node1,node2,node3,node4,node5,node6>>);
+
+    info(union_set);
+    info(intersection_set);
+    info(difference_set);
+    info(symmetric_difference_set);
+
+    std::cout << "------------------\n";
+}
+
+
+
+void test_alg3()
+{
+    using t0 = type_list<char,int,long,float,double>;
+    using t1 = reverse_t<t0>;
+    static_assert(std::same_as<t1, type_list<double,float,long,int,char>>);
+    info(reverse);
+
+    using t2 = type_list<char,char,char,int,int,int,int>;
+    static_assert(count_v<t2, char> == 3);
+    static_assert(count_v<t2, int> == 4);
+    static_assert(count_v<t2, long> == 0);
+    info(count);
+
+    static_assert(std::same_as<at_t<t0, 2>, long>);
+    static_assert(std::same_as<at_t<t0, 3>, float>);
+    static_assert(std::same_as<at_t<t0, 4>, double>);
+    info(at);
+
+    using t3 = first_nt<t0, 3>;
+    static_assert(std::same_as<t3, type_list<char,int,long>>);
+    info(fist);
+
+    struct node;
+    using t4 = replace_t<t0, double, node>;
+    static_assert(std::same_as<t4, type_list<char,int,long,float,node>>);
+    info(replace);
+
+
+    std::cout << "------------------\n";
+}
+
+
+
 
 void test_alg2()
 {
@@ -111,6 +216,10 @@ void test_alg2()
     static_assert(find_if_v<t0, bigger_eq> == 4);
     info(find_if);
 
+    using t1 = type_list<char,char,int,int,long,long,float,float,double,double>;
+    using t2 = unique_t<t1>;
+    static_assert(std::same_as<t2, t0>);
+    info(unique);
 
 
     std::cout << "------------------\n";
@@ -185,12 +294,14 @@ void test_alg()
 
 int main(int argc, char *argv[])
 {
-    test_alg2();
-    test_alg1();
-    test_alg();
-    test_type_list();
     test_aux();
-
+    test_type_list();
+    test_alg();
+    test_alg1();
+    test_alg2();
+    test_alg3();
+    test_alg4();
+    test_alg5();
 
 
 
