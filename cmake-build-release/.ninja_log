@@ -1,0 +1,4 @@
+# ninja log v5
+2	48	0	D:/dev/workspace/clion/cpp_meta/cmake-build-release/CMakeFiles/cmake.verify_globs	26b10527a0809e8f
+1	3908	7453597754657129	test/CMakeFiles/ppl_test.dir/metann/ppl_test.cpp.obj	75c91c50026092f3
+3910	6405	7453597759128916	test/ppl_test.exe	278ee835b5030482

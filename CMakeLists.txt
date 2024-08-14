@@ -8,6 +8,7 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 if (MSVC)
     add_compile_options("/utf-8")
+    add_definitions(-DWINDOWS_PLATFORM)
 endif ()
 if (WIN32)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)

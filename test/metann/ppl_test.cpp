@@ -3,6 +3,8 @@
 //
 // parallel-fibonacci.cpp
 // compile with: /EHsc
+#ifdef WINDOWS_PLATFORM
+
 #include <windows.h>
 #include <ppl.h>
 #include <concurrent_vector.h>
@@ -11,6 +13,13 @@
 #include <tuple>
 #include <algorithm>
 #include <iostream>
+//debug
+//serial time: 3328 ms
+//parallel time: 2359 ms
+
+//release
+//serial time: 2922 ms
+//parallel time: 1766 ms
 
 
 // Calls the provided work function and returns the number of milliseconds
@@ -70,5 +79,7 @@ int main(int argc, char *argv[])
         std::wcout << L"fib(" << std::get<0>(pair) << L"): " << std::get<1>(pair) << std::endl;
     });
 }
-
+#else
+int main() { return 0; }
+#endif
 
