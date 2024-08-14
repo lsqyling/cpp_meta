@@ -273,18 +273,26 @@ void test_alg()
     std::cout << "------------------\n";
 }
 
+namespace analyze_at {
 
+template<typename T>
+T index_at(T *arr, size_t idx)
+{
+    if (idx == 0)
+        return arr[0];
 
+    return index_at(arr+1, idx-1);
+}
 
+void test_index_at()
+{
+    int array[10] = {0,1,2,3,4,5,6,7,8,9};
+    std::cout << index_at(array, 8) << std::endl;
+    info(index_at);
+    std::cout << "------------------\n";
+}
 
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -302,6 +310,7 @@ int main(int argc, char *argv[])
     test_alg3();
     test_alg4();
     test_alg5();
+    analyze_at::test_index_at();
 
 
 
