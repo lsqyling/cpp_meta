@@ -4,7 +4,6 @@
 #include "metann/facilities/type_list.hpp"
 
 
-
 using namespace metann;
 
 template<typename ...T>
@@ -292,6 +291,40 @@ void test_index_at()
     std::cout << "------------------\n";
 }
 
+void test_decay()
+{
+    static_assert(std::is_same_v<std::decay_t<const int>, int>);
+    static_assert(std::is_same_v<std::decay_t<const int&>, int>);
+    static_assert(std::is_same_v<std::decay_t<const int*>, const int*>);
+    static_assert(std::is_same_v<std::decay_t<int*const>, int*>);
+    static_assert(std::is_same_v<std::decay_t<const volatile int>, int>);
+    static_assert(std::is_same_v<std::decay_t<const volatile int&>, int>);
+    static_assert(std::is_same_v<std::decay_t<const volatile int*>, const volatile int*>);
+    static_assert(std::is_same_v<std::decay_t<const volatile int*const volatile&>, const volatile int*>);
+    static_assert(std::is_same_v<std::decay_t<const int[3]>, const int*>);
+    static_assert(std::is_same_v<std::decay_t<int(&)[3]>, int*>);
+    info(decay);
+    std::cout << "------------------\n";
+}
+
+template<int a, int b> //better
+constexpr int add = a + b;
+
+template<int a, int b>
+constexpr int add_() //bad
+{
+    return a + b;
+}
+
+
+void test_meta_add()
+{
+    static_assert(add<3, 4> == 7);
+    static_assert(add_<3, 4>() == 7);
+    info(add);
+
+    std::cout << "------------------\n";
+}
 }
 
 
@@ -311,9 +344,8 @@ int main(int argc, char *argv[])
     test_alg4();
     test_alg5();
     analyze_at::test_index_at();
-
-
-
+    analyze_at::test_decay();
+    analyze_at::test_meta_add();
 
     return 0;
 }
