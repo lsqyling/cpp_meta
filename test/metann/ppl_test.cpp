@@ -78,6 +78,10 @@ int main(int argc, char *argv[])
     std::for_each(std::begin(results2), std::end(results2), [](std::tuple<int, int> &pair) {
         std::wcout << L"fib(" << std::get<0>(pair) << L"): " << std::get<1>(pair) << std::endl;
     });
+
+
+    return 0;
+
 }
 #else
 int main() { return 0; }
